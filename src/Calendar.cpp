@@ -102,6 +102,13 @@ void CalendarClass::updateCalendar() {
 }
 
 void CalendarClass::setDate(uint16_t year, uint8_t month, uint8_t monthDay, uint8_t hour, uint8_t minute, uint8_t second) {
+	_year = year;
+	_month = month;
+	_monthDay = monthDay;
+	_hour = hour;
+	_minute = minute;
+	_second = second;
+
 	// Spent years
     uint32_t seconds = (uint32_t(_year) - 1970L) * SECONDS_PER_DAY * 365L;
     for (uint16_t i = 1970L; i < _year; ++i) {
@@ -125,7 +132,9 @@ void CalendarClass::setDate(uint16_t year, uint8_t month, uint8_t monthDay, uint
     seconds += _minute * SECONDS_PER_MINUTE;
     seconds += _second;
 
+	_lastUpdateTime = millis();
 	_timestamp = seconds;
+	_millis = 0UL;
 }
 
 CalendarClass Calendar;

@@ -101,4 +101,31 @@ void CalendarClass::updateCalendar() {
 	_monthDay = time + 1;
 }
 
+void CalendarClass::setDate(uint16_t year, uint8_t month, uint8_t monthDay, uint8_t hour, uint8_t minute, uint8_t second) {
+	// Spent years
+    uint32_t seconds = (uint32_t(_year) - 1970L) * SECONDS_PER_DAY * 365L;
+    for (uint16_t i = 1970L; i < _year; ++i) {
+        if (LEAP_YEAR(i)) {
+            seconds +=  SECONDS_PER_DAY;
+        }
+    }
+
+    // Spent months
+    for (int i = 1; i < _month; i++) {
+        seconds += SECONDS_PER_DAY * uint32_t(_monthDays[i - 1]);
+        if ((i == 2) && LEAP_YEAR(_year)) {
+            seconds += SECONDS_PER_DAY;
+        }
+    }
+
+    // Spent days
+    seconds += (uint32_t(_monthDay) - 1) * SECONDS_PER_DAY;
+
+    seconds += _hour * SECONDS_PER_HOUR;
+    seconds += _minute * SECONDS_PER_MINUTE;
+    seconds += _second;
+
+	_timestamp = seconds;
+}
+
 CalendarClass Calendar;

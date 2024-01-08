@@ -1,4 +1,5 @@
-# Arduino Software Calendar
+# ⚠️ TRANSFER WARNING
 
-Arduino Calendar using the millis() function.
-**WARNING** It is not very accurate and it depends on the temperature. Update the time very often from a more accurate time source (NTP, RTC, ...)
+This repository has been transfered to Industrial Shields organization: https://github.com/Industrial-Shields/arduino-Calendar
+
+If you have arrived here via an external link within our website https://industrialshields.com or documentation, please email to <support@industrialshields.com> to report the incident. Thank you for your collaboration.
